@@ -28,60 +28,25 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-  let name = "Name";
-  if (variables.name != null) {
-    name = variables.name;
-  }
-  let lastName = "Last name";
-  if (variables.lastName != null) {
-    lastName = variables.lastName;
-  }
-  let twitter = "4geeksacademy";
-  if (variables.twitter != null) {
-    twitter = variables.twitter;
-  }
-
-  let github = "4geeksacademy";
-  if (variables.github != null) {
-    github = variables.github;
-  }
-
-  let linkedin = "school/4geeksacademy";
-  if (variables.linkedin != null) {
-    linkedin = variables.linkedin;
-  }
-
-  let instagram = "4geeksacademy";
-  if (variables.instagram != null) {
-    instagram = variables.instagram;
-  }
-  let role = "Select role";
-  if (variables.role != null) {
-    role = variables.role;
-  }
-
-  let city = "Select a city";
-  if (variables.city != null) {
-    city = variables.city;
-  }
-
-  let country = "Select a country";
-  if (variables.country != null) {
-    country = variables.country;
-  }
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>${name} ${lastName}</h1>
-          <h2>${role}</h2>
-          <h3>${city}, ${country}</h3>
+          <h1>${variables.name || "Name"} ${variables.lastName ||
+    "Last Name"}</h1>
+          <h2>${variables.role || "Select a role"}</h2>
+          <h3>${variables.city || "Select a city"}, ${variables.country ||
+    "Select a country"}</h3>
           <ul class="${variables.socialMediaPosition}">
-            <li><a href="https://twitter.com/${twitter}"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/${github}"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/${linkedin}"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/${instagram}"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://twitter.com/${variables.twitter ||
+              "4geeksacademy"}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${variables.github ||
+              "4geeksacademy"}"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/${variables.linkedin ||
+              "school/4geeksacademy"}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${variables.instagram ||
+              "4geeksacademy"}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
